@@ -1,0 +1,118 @@
+import React, { useState } from "react";
+
+function WorkshopRegistration() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [topic, setTopic] = useState("");
+  const [error, setError] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!name || !email || !topic) {
+      setError("All fields are required");
+      return;
+    }
+
+    if (!email.includes("@")) {
+      setError("Please enter a valid email address");
+      return;
+    }
+
+    setError("");
+    alert("🎉 Workshop Registration Successful!");
+  };
+
+  return (
+    <>
+      {/* Google Font */}
+      <style>
+        {`
+          @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap');
+
+          body {
+            margin: 0;
+            font-family: 'Playfair Display', serif;
+          }
+        `}
+      </style>
+
+      <div style={styles.container}>
+        <div style={styles.card}>
+          <h2 style={styles.heading}>Online Workshop Registration</h2>
+
+          <form onSubmit={handleSubmit}>
+            <label style={styles.label}>Name</label>
+            <input
+              type="text"
+              placeholder="Enter your name"
+              style={styles.input}
+              onChange={(e) => setName(e.target.value)}
+            />
+
+            <br /><br />
+
+            <label style={styles.label}>Email</label>
+            <input
+              type="email"
+              placeholder="Enter your email"
+              style={styles.input}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+
+            <br /><br />
+
+            <label style={styles.label}>Workshop Topic</label>
+            <input
+              type="text"
+              placeholder="Enter workshop topic"
+              style={styles.input}
+              onChange={(e) => setTopic(e.target.value)}
+            />
+
+            {error && <p style={styles.error}>{error}</p>}
+
+            <button type="submit" style={styles.button}>
+              Register
+            </button>
+          </form>
+
+          <hr />
+
+          <h3 style={styles.subHeading}>Live Preview</h3>
+          <div style={styles.preview}>
+            <p><strong>Name:</strong> {name || "—"}</p>
+            <p><strong>Email:</strong> {email || "—"}</p>
+            <p><strong>Workshop Topic:</strong> {topic || "—"}</p>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
+
+const styles = {
+  container: {
+    minHeight: "100vh",
+    backgroundColor: "#0A1A2F", // Navy
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  card: {
+    backgroundColor: "#ffffff",
+    padding: "30px",
+    width: "420px",
+    borderRadius: "14px",
+    boxShadow: "0 12px 30px rgba(0,0,0,0.35)",
+  },
+  heading: {
+    textAlign: "center",
+    color: "#0A1A2F",
+    marginBottom: "20px",
+  },
+  subHeading: {
+    color: "#0A1A2F",
+  },
+  label: {
+    fontWeig
