@@ -1,0 +1,106 @@
+import React from "react";
+
+export default function OnlineCab() {
+  const bookCab = () => {
+    const name = prompt("Enter your name:");
+    if (!name) {
+      alert("Name is required!");
+      return;
+    }
+
+    const pickup = prompt("Enter pickup location:");
+    if (!pickup) {
+      alert("Pickup location is required!");
+      return;
+    }
+
+    const drop = prompt("Enter drop location:");
+    if (!drop) {
+      alert("Drop location is required!");
+      return;
+    }
+
+    const cabType = prompt("Choose cab type: Mini / Sedan / SUV");
+    if (!cabType) {
+      alert("Cab type is required!");
+      return;
+    }
+
+    const confirmBooking = confirm(
+      `Confirm your ride:\n\nName: ${name}\nFrom: ${pickup}\nTo: ${drop}\nCab Type: ${cabType}`
+    );
+
+    if (confirmBooking) {
+      alert(
+        `🚕 Booking Confirmed!\n\nDriver will reach ${pickup} shortly.\nHave a safe ride, ${name}!`
+      );
+    } else {
+      alert("Cab booking cancelled.");
+    }
+  };
+
+  return (
+    <>
+      {/* Google Font */}
+      <style>
+        {`
+          @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap');
+
+          body {
+            margin: 0;
+            font-family: 'Playfair Display', serif;
+          }
+        `}
+      </style>
+
+      <div style={styles.container}>
+        <div style={styles.card}>
+          <h2 style={styles.heading}>Online Cab Booking</h2>
+          <p style={styles.text}>
+            Book your cab quickly using interactive dialog boxes.
+          </p>
+
+          <button style={styles.button} onClick={bookCab}>
+            🚕 Book a Cab
+          </button>
+        </div>
+      </div>
+    </>
+  );
+}
+
+const styles = {
+  container: {
+    minHeight: "100vh",
+    backgroundColor: "#0A1A2F", // Navy
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  card: {
+    backgroundColor: "#ffffff",
+    padding: "35px",
+    width: "420px",
+    borderRadius: "14px",
+    textAlign: "center",
+    boxShadow: "0 12px 30px rgba(0,0,0,0.35)",
+  },
+  heading: {
+    color: "#0A1A2F",
+    marginBottom: "10px",
+  },
+  text: {
+    color: "#333",
+    marginBottom: "25px",
+    fontSize: "15px",
+  },
+  button: {
+    padding: "14px 28px",
+    fontSize: "16px",
+    backgroundColor: "#0A1A2F",
+    color: "#D4AF37", // Gold
+    border: "none",
+    borderRadius: "8px",
+    cursor: "pointer",
+  },
+};
